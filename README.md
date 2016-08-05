@@ -2,6 +2,10 @@
 
 This allows you to use Mixpanel's Export API to display the raw JSONL data as a user-friendly, readable table. This was built to receive and read single-page web app analytics.
 
+Mixpanel's info on exporting raw data:
+
+https://mixpanel.com/docs/api-documentation/exporting-raw-data-you-inserted-into-mixpanel
+
 It is built to only include the following relevent fields from being displayed, but you may customize it:
 
 - time
