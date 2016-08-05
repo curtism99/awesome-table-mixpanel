@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<!-- This page uses https://github.com/dangrossman/bootstrap-daterangepicker -->
+<!-- bootstrap-daterangepicker is made available under the same license as Bootstrap. Moment.js is included in this repository for convenience. It is available under the MIT license. -->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dates</title>
+    <link rel="stylesheet" href="css/daterangepicker.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/moment.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/daterangepicker.js"></script>
+
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12" style="margin-top: 200px; text-align: center;">
+                <h3>Mixpanel Analytics</h3>
+                <h2>Pick Start and End Dates</h2>
+                <div class="col-md-4 col-md-offset-4">
+                    <form name="date-input" method="post" action="awesome-table.php">
+                        <input name= "reportrange" id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+                            <span></span> <b class="caret"></b>
+                        </input>
+                        <br/>
+                        <br/>
+                        <button type="submit" class="btn btn-lg btn-primary btn-block" id="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+
+    <script type="text/javascript">
+        $(function() {
+
+            var start = moment().subtract(29, 'days');
+            var end = moment();
+
+            function cb(start, end) {
+                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+            }
+
+            $('#reportrange').daterangepicker({
+                startDate: start,
+                endDate: end,
+                ranges: {
+                    'Today': [moment(), moment()],
+                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                    'This Month': [moment().startOf('month'), moment().endOf('month')],
+                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+                locale: {
+                    format: 'YYYY-MM-DD'
+                }
+            }, cb);
+
+            cb(start, end);
+
+
+        });
+    </script>
+</body>
+</html>
