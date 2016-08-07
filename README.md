@@ -1,12 +1,10 @@
 # awesome-table-mixpanel
 
-This allows you to use Mixpanel's Export API to display the raw JSONL data as a user-friendly, readable table. This was built to receive and read single-page web app analytics.
+This website is usedd with [Mipaanel's Export API](https://mixpanel.com/docs/api-documentation/exporting-raw-data-you-inserted-into-mixpanel) to display the raw JSONL data as a user-friendly, readable table. This table can show multiple properties of each tracked event and is used to show individual activities instead of only Mixpanel's segmentation data. This was built for events tracked on a single-page web application.
 
-Mixpanel's info on exporting raw data:
+There are specific keys that are return in the Mixpanel data export. They can be [found here](https://mixpanel.com/docs/api-documentation/exporting-raw-data-you-inserted-into-mixpanel) at the bottom of the page under "Return Form".
 
-https://mixpanel.com/docs/api-documentation/exporting-raw-data-you-inserted-into-mixpanel
-
-It is built to only include the following relevent fields from being displayed, but you may customize it:
+This project is built to only include the following relevent fields from being displayed, but you may customize it:
 
 - time
 - event
@@ -25,21 +23,25 @@ $api_secret = 'MIXPANEL_SECRET_KEY';
 ```
 
 
-Modify field filters in `js/awesomeTableJs.js` in two sections:
+Modify field filters in `js/awesomeTableJs.js` in two following sections:
+###Header Creation
 ```
 line 742
 
 if(a.innerHTML == "event") {
+    a.innerHTML = "Event";
     th.appendChild(a);
     this.jsonKeys.push(key);
     header.appendChild(th);
 } else if (a.innerHTML == "time") {
+    a.innerHTML = "Time";
     th.appendChild(a);
     this.jsonKeys.push(key);
     header.appendChild(th);
 } else if ... etc ...
 ```
-and
+
+###Table Population
 ```
 line 837
 

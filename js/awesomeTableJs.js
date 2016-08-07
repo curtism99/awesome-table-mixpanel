@@ -724,6 +724,8 @@
         var trlen = result.length;
         //check If json data is object or string
         if (typeof (result[0]) == "object") {
+            $("#sortInfo").removeClass("hidden");
+            $("#pageCount").removeClass("hidden");
             //automatic create header
             var header = document.createElement("thead");
             for (var key in result[0]) {
@@ -744,38 +746,48 @@
                 //Only show the following columns out of all the raw data dump
                 //This creates headers
                 if(a.innerHTML == "event") {
+                    //Modify a's field how we want it to be displayed on the table.
+                    a.innerHTML = "Event";
                     th.appendChild(a);
                     this.jsonKeys.push(key);
                     header.appendChild(th);
                 } else if (a.innerHTML == "time") {
+                    a.innerHTML = "Time";
                     th.appendChild(a);
                     this.jsonKeys.push(key);
                     header.appendChild(th);
                 } else if (a.innerHTML == "distinct_id") {
+                    a.innerHTML="Unique ID";
                     th.appendChild(a);
                     this.jsonKeys.push(key);
                     header.appendChild(th);
                 } else if(a.innerHTML == "$city") {
+                    a.innerHTML = "City";
                     th.appendChild(a);
                     this.jsonKeys.push(key);
                     header.appendChild(th);
                 } else if (a.innerHTML == "$region") {
+                    a.innerHTML = "Region";
                     th.appendChild(a);
                     this.jsonKeys.push(key);
                     header.appendChild(th);
                 } else if (a.innerHTML == "mp_country_code") {
+                    a.innerHTML = "Country";
                     th.appendChild(a);
                     this.jsonKeys.push(key);
                     header.appendChild(th);
                 } else if (a.innerHTML == "$device") {
+                    a.innerHTML = "Device";
                     th.appendChild(a);
                     this.jsonKeys.push(key);
                     header.appendChild(th);
                 } else if (a.innerHTML == "$screen_height") {
+                    a.innerHTML = "Screen Height";
                     th.appendChild(a);
                     this.jsonKeys.push(key);
                     header.appendChild(th);
                 } else if (a.innerHTML == "$screen_width") {
+                    a.innerHTML = "Screen Width";
                     th.appendChild(a);
                     this.jsonKeys.push(key);
                     header.appendChild(th);
@@ -892,6 +904,7 @@
 
             //Added the below to display if no data in the selected date range. It was just not displaying anything.
             $("#noInfoWarning").append("<h1>No Data Available in the Selected Date Range</h1>");
+            $("#sortInfo").addClass("")
             var s = Document.getElementsByClassName("aweTbl-searchBox");
             s.addClass("visibility: hidden");
         }
