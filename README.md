@@ -29,6 +29,8 @@ Modify field filters in `js/awesomeTableJs.js` in two following sections:
 line 742
 
 if(a.innerHTML == "event") {
+    //Modify a's field how we want it to be displayed on the table.
+    a.innerHTML = "Event";
     a.innerHTML = "Event";
     th.appendChild(a);
     this.jsonKeys.push(key);
